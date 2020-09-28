@@ -1242,3 +1242,27 @@ arrange(litters_df, pups_born_alive, gd0_weight)
 
 first in order for pups born alive, and within that, gestational day 0
 weight.
+
+## ‘%\>%’
+
+PIPING\!\!\!\!\!\!\!\!\!
+
+``` r
+litters_data_raw = read.csv("./data/FAS_litters.csv")
+litters_clean_name = janitor::clean_names(litters_data_raw)
+litters_data_selected = select(litters_clean_name, -pups_survive)
+litters_mutated = mutate(litters_data_selected, wt_gain = gd18_weight - gd0_weight )
+litters_without_missing = drop_na(litters_mutated, gd0_weight)
+```
+
+USE THE PIPE OPERATOR INSTEAD OF ALL OF THIS. Below yields the same
+results, but it’s much cleaner.
+
+``` r
+litters_df = 
+  read.csv("./data/FAS_litters.csv") %>% 
+  janitor::clean_names() %>% 
+  select(-pups_survive) %>% 
+  mutate(wt_gain = gd18_weight - gd0_weight) %>% 
+  drop_na(gd0_weight)
+```
