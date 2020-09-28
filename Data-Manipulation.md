@@ -15,3 +15,10 @@ library(tidyverse)
     ## ── Conflicts ──────────────────────────────────────────── tidyverse_conflicts() ──
     ## x dplyr::filter() masks stats::filter()
     ## x dplyr::lag()    masks stats::lag()
+
+## Load in the FAS litters data
+
+``` r
+litters_df = read.csv("./data/FAS_litters.csv")
+litters_df = janitor::clean_names(litters_df)
+```
