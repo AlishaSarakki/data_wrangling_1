@@ -105,4 +105,11 @@ mutate(
 ```
 Create a new variable, modify an existing variable. Everything in group is lower case, new variables get tacked on to the end. 
 
+## 'arrange'
+Function: put things in order
+
+```{r}
+arrange(litters_df, pups_born_alive, gd0_weight)
+```
+first in order for pups born alive, and within that, gestational day 0 weight.
 
