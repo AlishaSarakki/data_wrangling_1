@@ -13,3 +13,54 @@ litters_df = read.csv("./data/FAS_litters.csv")
 litters_df = janitor::clean_names(litters_df)
 ```
 
+## 'select'
+
+choose some columns and not others.
+
+
+Here, select which columns you want displayed.
+```{r}
+select(litters_df, group, litter_number)
+```
+
+
+Below, select columns from a starting point to an ending point (range) using a colon. 
+
+```{r}
+select(litters_df, group, gd0_weight:gd_of_birth)
+```
+
+
+
+
+
+To get rid of a column, use a minus sign:
+```{r}
+select(litters_df, -litter_number)
+```
+
+Renaming columns.....
+```{r}
+select(litters_df, GROUP = group, LITTer_NUmBer = litter_number)
+```
+If you do not want to simultaneously select and rename,
+```{r}
+rename(litters_df, Group = group, Litter_NUMBER = litter_number)
+```
+
+Select helpers
+
+```{r}
+select(litters_df, starts_with("gd"))
+```
+these helper functions give us a quick way to select things - this selects everything that starts with 'gd'
+
+```{r}
+select(litters_df, litter_number, everything())
+```
+moves litter number to the beginning, but keeps everything else
+another way to do this:
+```{r}
+relocate(litters_df, litter_number)
+```
+
